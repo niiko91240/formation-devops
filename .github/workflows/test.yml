@@ -1,0 +1,27 @@
+name: Test actions formationDevops
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deployment:
+    name: Test actions formationDevops
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - uses: actions/checkout@v3
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install mocha
+        run: npm install -g mocha
+
+      - name: Run All Node.js Tests
+        run: npm run test
